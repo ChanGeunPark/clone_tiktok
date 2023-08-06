@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class UseStatePage extends HookWidget {
-  const UseStatePage({Key? key}) : super(key: key);
+  UseStatePage({super.key});
+  int value = 0;
 
   @override
   Widget build(BuildContext context) {
-    final count = useState(0);
+    final count = useState(value);
+
+    useEffect(() {
+      print("useEffect");
+      return null;
+    }, [count.value]);
 
     return Scaffold(
         appBar: AppBar(title: const Text('UseState Example')),
